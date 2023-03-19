@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<div class="container">
+		<h1>Study Site</h1>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/studytimer">Timer</a></li>
+			<li><a href="/todolist">To Do List</a></li>
+      <li><a href="/songlist">Song List</a></li>
+      <li><a href="/easteregg">Easter Egg</a></li>
+	</div>
+    <title>Study Playlists</title>
+  <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+          background-color: #e5e5d6;
+        }
+        h1 {
+            font-size: 36px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        li {
+            margin-bottom: 10px;
+        }
+        .playlist {
+            display: flex;
+            align-items: center;
+            background-color: #dcd8f3;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .playlist img {
+            width: 100px;
+            height: 100px;
+            margin-right: 20px;
+        }
+        .playlist h2 {
+            font-size: 24px;
+            margin: 0;
+        }
+        .playlist a {
+            font-size: 18px;
+            color: #4285f4;
+            text-decoration: none;
+            margin-left: auto;
+        }
+        .playlist a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Study Playlists</h1>
+    <ul>
+        <li>
+            <div class="playlist">
+                <img src="https://i.scdn.co/image/ab67706f00000003a88c2c2d527186f46b64e77a" alt="Lo-fi Beats playlist cover">
+                <div>
+                    <h2>Lo-fi Beats</h2>
+                    <p>A collection of relaxing lo-fi beats for studying and working.</p>
+                </div>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DWZeKCadgRdKQ" target="_blank">Listen on Spotify</a>
+            </div>
+        </li>
+        <li>
+            <div class="playlist">
+                <img src="https://open.spotify.com/playlist/37i9dQZF1DWWEJlAGA9gs0" alt="Instrumental Study playlist cover">
+                <div>
+                    <h2>Instrumental Study</h2>
+                    <p>An instrumental mix of classical, jazz, and modern pieces for studying and concentration.</p>
+                </div>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DWWEJlAGA9gs0" target="_blank">Listen on Spotify</a>
+            </div>
+        </li>
+        <li>
+            <div class="playlist">
+                <img src="https://open.spotify.com/playlist/37i9dQZF1DX8NTLI2TtZa6" alt="Intense Studying playlist cover">
+                <div>
+                    <h2>Intense Studying</h2>
+                    <p>A mix of instrumental and electronic music for deep focus and productivity.</p>
+                </div>
+                <a href="https://open.spotify.com/playlist/37i9dQZF1DX8NTLI2TtZa6" target="_blank">Listen on Spotify</a>
+            </div>
+        </li>
+    </ul>
+  <button onclick="goToHomepage()">Back to Homepage</button>
+
+    <script>
+        function goToHomepage() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>

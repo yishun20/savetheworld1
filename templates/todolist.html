@@ -1,0 +1,91 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<div class="container">
+		<h1>Study Site</h1>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/studytimer">Timer</a></li>
+			<li><a href="/todolist">To Do List</a></li>
+      <li><a href="/songlist">Song List</a></li>
+      <li><a href="/easteregg">Easter Egg</a></li>
+	</div>
+    <title>To-Do List</title>
+  <style>
+    body {
+            font-family: Arial, sans-serif;
+          background-color: #e5e5d6;
+        }
+  </style>
+  </head>
+  <body>
+  
+    <style>
+        /* Style the list items */
+        li {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #f8f8f8;
+        }
+
+        /* Style the checkboxes */
+        .checkbox {
+            margin-right: 10px;
+            vertical-align: middle;
+        }
+
+        /* Style the "Add Task" button */
+        #add-task {
+            margin: 10px;
+            padding: 10px;
+            border: 1px solid black;
+            border-radius: 5px;
+            background-color: #ccc;
+            cursor: pointer;
+        }
+    </style>
+
+    <h1>To-Do List</h1>
+
+    <ul id="task-list">
+    </ul>
+
+    <div id="add-task-container">
+        <input type="checkbox" id="new-task-checkbox" class="checkbox" disabled>
+        <input type="text" id="new-task-input">
+        <button id="add-task">Add Task</button>
+    </div>
+
+    <script>
+        var taskList = document.getElementById("task-list");
+        var newTaskInput = document.getElementById("new-task-input");
+        var addTaskButton = document.getElementById("add-task");
+
+        addTaskButton.addEventListener("click", function() {
+            var taskText = newTaskInput.value.trim();
+            if (taskText) {
+                var newTaskItem = document.createElement("li");
+                var newTaskCheckbox = document.createElement("input");
+                newTaskCheckbox.type = "checkbox";
+                newTaskCheckbox.className = "checkbox";
+                newTaskItem.appendChild(newTaskCheckbox);
+                newTaskItem.appendChild(document.createTextNode(taskText));
+                taskList.appendChild(newTaskItem);
+                newTaskInput.value = "";
+            }
+        });
+    </script>
+  <button onclick="goToHomepage()">Back to Homepage</button>
+
+    <script>
+        function goToHomepage() {
+            window.location.href = "/";
+        }
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+	<div class="container">
+		<h1>Study Site</h1>
+		<ul>
+			<li><a href="/">Home</a></li>
+			<li><a href="/studytimer">Timer</a></li>
+			<li><a href="/todolist">To Do List</a></li>
+      <li><a href="/songlist">Song List</a></li>
+      <li><a href="/easteregg">Easter Egg</a></li>
+	</div>
+    <title>Pomodoro Timer</title>
+  <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #e5e5d6;
+        }
+        h1 {
+            font-size: 48px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+        }
+        #timer {
+            font-size: 72px;
+            margin-bottom: 40px;
+        }
+        button {
+            font-size: 24px;
+            margin-top: 20px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #4285f4;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        button:active {
+            background-color: #0d47a1;
+        }
+        input[type="number"] {
+            font-size: 24px;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: none;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Pomodoro Timer</h1>
+    <div id="timer"></div>
+    <input type="number" id="duration-input" placeholder="Duration in minutes">
+    <button id="start-button">Start</button>
+
+    <script>
+        const timerElement = document.getElementById('timer');
+        const startButton = document.getElementById('start-button');
+        const durationInput = document.getElementById('duration-input');
+
+        let timeRemaining;
+        let timerId;
+
+        function updateTimer() {
+            const minutes = Math.floor(timeRemaining / 60);
+            const seconds = timeRemaining % 60;
+            timerElement.innerHTML = `${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        }
+
+        function startTimer() {
+            const duration = durationInput.value.trim();
+            if (!duration) {
+                alert('Please enter a duration in minutes.');
+                return;
+            }
+            timeRemaining = duration * 60;
+            durationInput.disabled = true;
+            startButton.removeEventListener('click', startTimer);
+            startButton.addEventListener('click', stopTimer);
+            startButton.innerHTML = 'Stop';
+            timerId = setInterval(() => {
+                timeRemaining--;
+                if (timeRemaining <= 0) {
+                    clearInterval(timerId);
+                    durationInput.disabled = false;
+                    startButton.removeEventListener('click', stopTimer);
+                    startButton.addEventListener('click', startTimer);
+                    startButton.innerHTML = 'Start';
+                }
+                updateTimer();
+            }, 1000);
+        }
+
+        function stopTimer() {
+            clearInterval(timerId);
+            durationInput.disabled = false;
+            startButton.removeEventListener('click', stopTimer);
+            startButton.addEventListener('click', startTimer);
+            startButton.innerHTML = 'Start';
+        }
+
+        startButton.addEventListener('click', startTimer);
+    </script>
+  <button onclick="goToHomepage()">Back to Homepage</button>
+
+    <script>
+        function goToHomepage() {
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
